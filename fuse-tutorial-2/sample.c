@@ -92,7 +92,7 @@ void setTheAlertText(const char *x, size_t size) {
 	if (file == NULL) 
 		 return;
 
-	while (nread = getline(&line, &len, file) != -1) 
+	while (getline(&line, &len, file) != -1) 
 		if (strncmp("cowsay", line, strlen("cowsay")) != 0) 
 			fprintf(stream, "%s", line);
 
