@@ -11,8 +11,6 @@
 #include <time.h>
 
 static int myGetattr(const char *path, struct stat *st){
-    printf("=====Called getattr=====\n");
-    printf("\t\t%s\n", path);
     st -> st_uid = getuid();
     st -> st_gid = getgid();
     st -> st_atime = time(NULL);
@@ -43,14 +41,9 @@ static int myRead(const char *path, char *buffer, size_t size, off_t offset, str
     }
     memcpy(buffer, selectedText + offset, size);
     return strlen(selectedText) - offset;
-
-    return 0;
 }
 
 static int myReaddir(const char *path, void *buffer, fuse_fill_dir_t filler, off_t offset, struct fuse_file_info *fInfo){
-    
-    printf("Reading list of %s\n", path);
-    
     filler(buffer, ".", NULL, 0);
     filler(buffer, "..", NULL, 0);
 
