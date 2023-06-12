@@ -32,7 +32,7 @@ int my_getattr(const char *path, struct stat *st){
 int my_readdir(const char *path, void *buffer, fuse_fill_dir_t filler, off_t offset, struct fuse_file_info *fInfo){
 	filler(buffer, ".", NULL, 0);
 	filler(buffer, "..", NULL, 0);
-    filler(buffer, "memo", NULL, 0);
+    filler(buffer, "target", NULL, 0);
 	return 0;
 }
 
